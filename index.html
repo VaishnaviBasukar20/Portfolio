@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vaishnavi Basutkar - Professional Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a; /* Fallback background */
+            color: #E5E7EB; /* Light Gray */
+        }
+        #vanta-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        .section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 100px 2rem;
+            position: relative;
+            z-index: 1;
+            overflow-x: hidden; /* Prevents horizontal scrollbar from animations */
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        .glass-effect {
+            background: rgba(30, 41, 59, 0.5); /* Darker glass */
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .typed-cursor {
+            opacity: 1;
+            animation: blink 0.7s infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        .nav-link::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: #38bdf8; /* Light Blue */
+            transition: width .3s;
+        }
+        .nav-link:hover::after, .active-link::after {
+            width: 100%;
+        }
+        .animated-button {
+            background-size: 200% auto;
+            background-image: linear-gradient(to right, #38bdf8 0%, #3b82f6 50%, #38bdf8 100%);
+            transition: background-position 0.5s ease;
+        }
+        .animated-button:hover {
+            background-position: right center;
+        }
+        /* For ScrollReveal */
+        .reveal {
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div id="vanta-bg"></div>
+
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#hero" class="text-2xl font-bold text-white">VB</a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#about" class="nav-link text-gray-300 hover:text-white transition duration-300">About</a>
+                <a href="#experience" class="nav-link text-gray-300 hover:text-white transition duration-300">Experience</a>
+                <a href="#education" class="nav-link text-gray-300 hover:text-white transition duration-300">Education</a>
+                <a href="#projects" class="nav-link text-gray-300 hover:text-white transition duration-300">Projects</a>
+                <a href="#skills" class="nav-link text-gray-300 hover:text-white transition duration-300">Skills</a>
+                <a href="#achievements" class="nav-link text-gray-300 hover:text-white transition duration-300">Achievements</a>
+                <a href="#testimonials" class="nav-link text-gray-300 hover:text-white transition duration-300">Testimonials</a>
+                <a href="#contact" class="nav-link text-gray-300 hover:text-white transition duration-300">Contact</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-800/90 backdrop-blur-sm">
+            <a href="#about" class="block py-2 px-4 text-sm text-gray-300 hover:bg-slate-700">About</a>
+            <a href="#experience" class="block py-2 px-4 text-sm text-gray-300 hover:bg-slate-700">Experience</a>
+            <a href="#education" class="block py-2 px-4 text-sm text-gray-300 hover:bg-slate-700">Education</a>
+            <a href="#projects" class="block py-2 px-4 text-sm text-gray-300 hover:bg-slate-700">Projects</a>
+            <a href="#skills" class="block py-2 px-4 text-sm text-gray-300 hover:bg-slate-700">Skills</a>
+            <a href="#achievements" class="block py-2 px-4 text-sm text-gray-300 hover:bg-slate-700">Achievements</a>
+            <a href="#testimonials" class="block py-2 px-4 text-sm text-gray-300 hover:bg-slate-700">Testimonials</a>
+            <a href="#contact" class="block py-2 px-4 text-sm text-gray-300 hover:bg-slate-700">Contact</a>
+        </div>
+    </header>
+
+    <section id="hero" class="section text-center">
+        <div class="hero-content max-w-4xl">
+            <h1 class="text-4xl md:text-6xl font-black text-white leading-tight mb-4 reveal">
+                Hi, I'm Vaishnavi Basutkar.
+            </h1>
+            <p class="text-xl md:text-2xl text-sky-300 font-medium reveal">
+                I am a <span id="typed-text"></span><span class="typed-cursor">|</span>
+            </p>
+            <a href="#projects" class="mt-8 inline-block animated-button text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105 reveal">
+                View My Work
+            </a>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="container mx-auto text-center max-w-4xl glass-effect rounded-2xl p-8 md:p-12">
+            <h2 class="text-3xl md:text-4xl font-bold mb-8 reveal">About Me</h2>
+            <img src="https://placehold.co/150x150/38bdf8/0f172a?text=VB" alt="Vaishnavi Basutkar" class="w-40 h-40 rounded-full mx-auto mb-8 border-4 border-sky-400 shadow-lg reveal">
+            <p class="text-lg text-gray-300 leading-relaxed mb-4 reveal">
+                I’m a Data Scientist, Machine Learning Engineer, and BI Professional with 5 years of experience turning complex data into actionable business insights. Skilled in Python, SQL, R, Power BI, Tableau, AWS, and advanced ML/DL frameworks, I specialize in building predictive models, deploying AI solutions, creating interactive dashboards, and designing scalable analytics pipelines.
+            </p>
+            <p class="text-lg text-gray-300 leading-relaxed reveal">
+                With 30+ projects and 40+ successful client engagements, I’ve delivered solutions that improved campaign performance by 20%, boosted engagement metrics by 25%, and accelerated reporting processes by 30%. My work bridges technology and business, ensuring data translates directly into strategic impact.
+            </p>
+        </div>
+    </section>
+
+    <section id="experience" class="section">
+        <div class="container mx-auto max-w-4xl">
+            <h2 class="text-3xl md:text-4xl font-bold mb-16 text-center reveal">Work Experience</h2>
+            <div class="relative">
+                <div class="hidden md:block absolute left-1/2 -ml-px w-0.5 h-full bg-slate-700" aria-hidden="true"></div>
+                <div class="md:flex md:justify-between md:items-center mb-12 reveal">
+                    <div class="md:w-1/2 md:pr-8">
+                        <div class="glass-effect p-6 rounded-lg">
+                            <h3 class="text-xl font-bold text-sky-300">Head Of Data Science -SPC</h3>
+                            <p class="text-gray-400 mb-2">Lovely Professional University | 2025 - Present</p>
+                            <ul class="list-disc list-inside text-gray-300">
+                                <li>Organized and led a Tableau and Power BI workshop for 200+ students, delivering hands-on data visualization training.</li>
+                                <li>Collaborated with academic teams to build performance dashboards improving student engagement metrics by 25%.</li>
+                                <li>Mentored junior developers and conducted reviews.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="hidden md:block md:w-1/2"></div>
+                </div>
+                <div class="md:flex md:flex-row-reverse md:justify-between md:items-center mb-12 reveal">
+                    <div class="md:w-1/2 md:pl-8">
+                        <div class="glass-effect p-6 rounded-lg">
+                            <h3 class="text-xl font-bold text-sky-300">Airtasker – Freelancer</h3>
+                            <p class="text-gray-400 mb-2">Airtasker-Australia. | 2020 - Present</p>
+                            <ul class="list-disc list-inside text-gray-300">
+                                <li>Successfully completed 40+ freelance projects involving data manipulation, analytics, and ML model deployment.</li>
+                                <li>Delivered custom dashboards, hosted solutions, and analytics reports for clients across various industries.</li>
+                                <li>Specialized in solving real-world problems using tools like Python, Power BI, SQL, and AWS.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="hidden md:block md:w-1/2"></div>
+                </div>
+                <div class="md:flex md:justify-between md:items-center mb-12 reveal">
+                    <div class="md:w-1/2 md:pr-8">
+                        <div class="glass-effect p-6 rounded-lg">
+                            <h3 class="text-xl font-bold text-sky-300">Data Scientist</h3>
+                            <p class="text-gray-400 mb-2">Synex.AI| 2023 - 2025</p>
+                            <ul class="list-disc list-inside text-gray-300">
+                                <li>Built automated dashboards and KPI reports using Python and SQL, reducing reporting time by 30%.</li>
+                                <li>Developed predictive models and customer segmentation logic, boosting campaign performance by 20%.</li>
+        
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="hidden md:block md:w-1/2"></div>
+                </div>
+                <div class="md:flex md:flex-row-reverse md:justify-between md:items-center mb-12 reveal">
+                    <div class="md:w-1/2 md:pl-8">
+                        <div class="glass-effect p-6 rounded-lg">
+                            <h3 class="text-xl font-bold text-sky-300">Data Science Intern</h3>
+                            <p class="text-gray-400 mb-2">InternElite 2023 - 2024</p>
+                            <ul class="list-disc list-inside text-gray-300">
+                        
+                                <li>Specialized in solving real-world problems using tools like Python, Power BI, SQL, and AWS.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="hidden md:block md:w-1/2"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="education" class="section">
+        <div class="container mx-auto text-center max-w-4xl">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 reveal">Education</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="glass-effect p-6 rounded-xl reveal text-left">
+                    <h3 class="text-xl font-bold text-sky-300">Bachelor of Computer Science in Data Science</h3>
+                    <p class="text-gray-400 mb-2">Lovely Professional University</p>
+                    <p class="text-gray-300">Focused on advanced machine learning, big data technologies, and statistical modeling.</p>
+                </div>
+                <div class="glass-effect p-6 rounded-xl reveal text-left">
+                    <h3 class="text-xl font-bold text-sky-300">Bachelor of Science in Computer Science as Semester Exchange</h3>
+                    <p class="text-gray-400 mb-2">University Of Tasmania UTAS</p>
+                    <p class="text-gray-300">Specialized in software development, algorithms,database management,Bigdat.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 reveal">My Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <div class="group relative block w-full h-80 rounded-xl overflow-hidden reveal">
+                    <img src="https://placehold.co/600x400/1e293b/ffffff?text=Health+Care" alt="Breast Cancer Detection Project" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+                    <div class="relative h-full flex flex-col justify-end p-6 transform transition-transform duration-500 translate-y-2/3 group-hover:translate-y-0">
+                        <h3 class="text-2xl font-bold text-white mb-2">Breast Cancer Detection</h3>
+                        <p class="text-gray-300 opacity-0 transition-opacity duration-300 group-hover:opacity-100 mb-4">A project focused on diagnosing breast cancer using machine learning and making the models understandable with Explainable AI (XAI).</p>
+                        <div class="flex space-x-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                            <a href="https://your-live-demo-url-1.com" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-sky-300 font-semibold">Live Demo</a>
+                            <a href="https://github.com/your-username/breast-cancer-project" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-sky-300 font-semibold">Source Code</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="group relative block w-full h-80 rounded-xl overflow-hidden reveal">
+                    <img src="https://placehold.co/600x400/1e293b/ffffff?text=Analytical+Analysis" alt="Employee Attrition Predictor Project" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+                    <div class="relative h-full flex flex-col justify-end p-6 transform transition-transform duration-500 translate-y-2/3 group-hover:translate-y-0">
+                        <h3 class="text-2xl font-bold text-white mb-2">Employee Attrition & Performance Predictor</h3>
+                        <p class="text-gray-300 opacity-0 transition-opacity duration-300 group-hover:opacity-100 mb-4">A comprehensive tool for HR to make data-driven decisions to improve employee retention.</p>
+                        <div class="flex space-x-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                            <a href="https://your-live-demo-url-2.com" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-sky-300 font-semibold">Live Demo</a>
+                            <a href="https://github.com/your-username/employee-attrition-project" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-sky-300 font-semibold">Source Code</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="group relative block w-full h-80 rounded-xl overflow-hidden reveal">
+                    <img src="https://placehold.co/600x400/1e293b/ffffff?text=Dashboard" alt="Spotify Dashboard Project" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+                    <div class="relative h-full flex flex-col justify-end p-6 transform transition-transform duration-500 translate-y-2/3 group-hover:translate-y-0">
+                        <h3 class="text-2xl font-bold text-white mb-2">Spotify Data Analysis Dashboard</h3>
+                        <p class="text-gray-300 opacity-0 transition-opacity duration-300 group-hover:opacity-100 mb-4">A tool to help stakeholders make data-driven decisions on artist promotion and song selection.</p>
+                        <div class="flex space-x-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                            <a href="https://your-live-demo-url-3.com" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-sky-300 font-semibold">Live Demo</a>
+                            <a href="https://github.com/your-username/spotify-dashboard-project" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-sky-300 font-semibold">Source Code</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="group relative block w-full h-80 rounded-xl overflow-hidden reveal">
+                    <img src="https://placehold.co/600x400/1e293b/ffffff?text=Health+Care" alt="Breast Cancer Detection Project" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+                    <div class="relative h-full flex flex-col justify-end p-6 transform transition-transform duration-500 translate-y-2/3 group-hover:translate-y-0">
+                        <h3 class="text-2xl font-bold text-white mb-2">Breast Cancer Detection</h3>
+                        <p class="text-gray-300 opacity-0 transition-opacity duration-300 group-hover:opacity-100 mb-4">A project focused on diagnosing breast cancer using machine learning and making the models understandable with Explainable AI (XAI).</p>
+                        <div class="flex space-x-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                            <a href="https://your-live-demo-url-1.com" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-sky-300 font-semibold">Live Demo</a>
+                            <a href="https://github.com/your-username/breast-cancer-project" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-sky-300 font-semibold">Source Code</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="group relative block w-full h-80 rounded-xl overflow-hidden reveal">
+                    <img src="https://placehold.co/600x400/1e293b/ffffff?text=Health+Care" alt="Breast Cancer Detection Project" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+                    <div class="relative h-full flex flex-col justify-end p-6 transform transition-transform duration-500 translate-y-2/3 group-hover:translate-y-0">
+                        <h3 class="text-2xl font-bold text-white mb-2">Breast Cancer Detection</h3>
+                        <p class="text-gray-300 opacity-0 transition-opacity duration-300 group-hover:opacity-100 mb-4">A project focused on diagnosing breast cancer using machine learning and making the models understandable with Explainable AI (XAI).</p>
+                        <div class="flex space-x-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                            <a href="https://your-live-demo-url-1.com" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-sky-300 font-semibold">Live Demo</a>
+                            <a href="https://github.com/your-username/breast-cancer-project" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-sky-300 font-semibold">Source Code</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="group relative block w-full h-80 rounded-xl overflow-hidden reveal">
+                    <img src="https://placehold.co/600x400/1e293b/ffffff?text=Health+Care" alt="Breast Cancer Detection Project" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+                    <div class="relative h-full flex flex-col justify-end p-6 transform transition-transform duration-500 translate-y-2/3 group-hover:translate-y-0">
+                        <h3 class="text-2xl font-bold text-white mb-2">Breast Cancer Detection</h3>
+                        <p class="text-gray-300 opacity-0 transition-opacity duration-300 group-hover:opacity-100 mb-4">A project focused on diagnosing breast cancer using machine learning and making the models understandable with Explainable AI (XAI).</p>
+                        <div class="flex space-x-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                            <a href="https://your-live-demo-url-1.com" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-sky-300 font-semibold">Live Demo</a>
+                            <a href="https://github.com/your-username/breast-cancer-project" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-sky-300 font-semibold">Source Code</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="group relative block w-full h-80 rounded-xl overflow-hidden reveal">
+                    <img src="https://placehold.co/600x400/1e293b/ffffff?text=Health+Care" alt="Breast Cancer Detection Project" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+                    <div class="relative h-full flex flex-col justify-end p-6 transform transition-transform duration-500 translate-y-2/3 group-hover:translate-y-0">
+                        <h3 class="text-2xl font-bold text-white mb-2">Breast Cancer Detection</h3>
+                        <p class="text-gray-300 opacity-0 transition-opacity duration-300 group-hover:opacity-100 mb-4">A project focused on diagnosing breast cancer using machine learning and making the models understandable with Explainable AI (XAI).</p>
+                        <div class="flex space-x-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                            <a href="https://your-live-demo-url-1.com" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-sky-300 font-semibold">Live Demo</a>
+                            <a href="https://github.com/your-username/breast-cancer-project" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-sky-300 font-semibold">Source Code</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="group relative block w-full h-80 rounded-xl overflow-hidden reveal">
+                    <img src="https://placehold.co/600x400/1e293b/ffffff?text=Health+Care" alt="Breast Cancer Detection Project" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+                    <div class="relative h-full flex flex-col justify-end p-6 transform transition-transform duration-500 translate-y-2/3 group-hover:translate-y-0">
+                        <h3 class="text-2xl font-bold text-white mb-2">Breast Cancer Detection</h3>
+                        <p class="text-gray-300 opacity-0 transition-opacity duration-300 group-hover:opacity-100 mb-4">A project focused on diagnosing breast cancer using machine learning and making the models understandable with Explainable AI (XAI).</p>
+                        <div class="flex space-x-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                            <a href="https://your-live-demo-url-1.com" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-sky-300 font-semibold">Live Demo</a>
+                            <a href="https://github.com/your-username/breast-cancer-project" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-sky-300 font-semibold">Source Code</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="group relative block w-full h-80 rounded-xl overflow-hidden reveal">
+                    <img src="https://placehold.co/600x400/1e293b/ffffff?text=Health+Care" alt="Breast Cancer Detection Project" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+                    <div class="relative h-full flex flex-col justify-end p-6 transform transition-transform duration-500 translate-y-2/3 group-hover:translate-y-0">
+                        <h3 class="text-2xl font-bold text-white mb-2">Breast Cancer Detection</h3>
+                        <p class="text-gray-300 opacity-0 transition-opacity duration-300 group-hover:opacity-100 mb-4">A project focused on diagnosing breast cancer using machine learning and making the models understandable with Explainable AI (XAI).</p>
+                        <div class="flex space-x-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                            <a href="https://your-live-demo-url-1.com" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-sky-300 font-semibold">Live Demo</a>
+                            <a href="https://github.com/your-username/breast-cancer-project" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-sky-300 font-semibold">Source Code</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="section">
+        <div class="container mx-auto text-center max-w-6xl">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 reveal">Core Technologies</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+                <div class="flex flex-col items-center p-6 glass-effect rounded-xl reveal">
+                    <svg class="w-16 h-16 mb-4 text-yellow-400" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Python</title><path d="M12 24a12 12 0 1 1 0-24 12 12 0 0 1 0 24zM8.11 8.11a2.97 2.97 0 0 0-2.97 2.97v5.94a2.97 2.97 0 0 0 2.97 2.97h2.97v-2.97H8.11v-5.94h5.94v2.97h2.97V8.11a2.97 2.97 0 0 0-2.97-2.97H8.11zm7.78 7.78a2.97 2.97 0 0 0 2.97-2.97V7.03a2.97 2.97 0 0 0-2.97-2.97h-2.97v2.97h2.97v5.94h-5.94v-2.97H7.03v5.94a2.97 2.97 0 0 0 2.97 2.97h5.94a2.97 2.97 0 0 0 2.97-2.97v-2.97h-2.97z"/></svg>
+                    <h3 class="text-xl font-bold">Python</h3>
+                </div>
+                <div class="flex flex-col items-center p-6 glass-effect rounded-xl reveal">
+                    <svg class="w-16 h-16 mb-4 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4m0 4v.01M4.828 4.828a1.5 1.5 0 012.122 0L9.88 7.76a1.5 1.5 0 010 2.122l-2.93 2.93a1.5 1.5 0 01-2.122 0L2.707 10.7a1.5 1.5 0 010-2.122L4.828 4.83zM14.12 4.828a1.5 1.5 0 012.122 0l2.93 2.93a1.5 1.5 0 010 2.122l-2.93 2.93a1.5 1.5 0 01-2.122 0l-2.93-2.93a1.5 1.5 0 010-2.122l2.93-2.93zM4.828 14.12a1.5 1.5 0 012.122 0l2.93 2.93a1.5 1.5 0 010 2.122l-2.93 2.93a1.5 1.5 0 01-2.122 0l-2.12-2.12a1.5 1.5 0 010-2.122l2.12-2.12zM14.12 14.12a1.5 1.5 0 012.122 0l2.93 2.93a1.5 1.5 0 010 2.122l-2.93 2.93a1.5 1.5 0 01-2.122 0l-2.93-2.93a1.5 1.5 0 010-2.122l2.93-2.93z"></path></svg>
+                    <h3 class="text-xl font-bold">AI / ML</h3>
+                </div>
+                <div class="flex flex-col items-center p-6 glass-effect rounded-xl reveal">
+                    <svg class="w-16 h-16 mb-4 text-blue-400" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>R</title><path d="M18.813 22.438h-4.313v-8.125h1.844c1.313 0 2.375-.938 2.375-2.313s-1.063-2.313-2.375-2.313H12.64V24H0V0h14.5c4.938 0 8.281 3.344 8.281 8.156 0 3.625-2.031 6.406-5.406 7.406v.031c2.25.688 3.656 2.844 3.656 5.5v1.344Z"/></svg>
+                    <h3 class="text-xl font-bold">R</h3>
+                </div>
+                <div class="flex flex-col items-center p-6 glass-effect rounded-xl reveal">
+                    <svg class="w-16 h-16 mb-4 text-indigo-400" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m-8 4v10m0-10c-4.418 0-8-1.79-8-4s3.582-4 8-4 8 1.79 8 4-3.582 4-8 4z"/></svg>
+                    <h3 class="text-xl font-bold">SQL</h3>
+                </div>
+                <div class="flex flex-col items-center p-6 glass-effect rounded-xl reveal">
+                    <svg class="w-16 h-16 mb-4 text-red-400" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Java</title><path d="M12.94 0c-4.96 1.94-7.4 6.78-7.4 12.32 0 3.55 1.48 6.78 3.88 9.03 1.2.98 2.82 2.65 2.82 2.65s.18-.17.35-.34a12.3 12.3 0 0 0 3.2-11.23c-.34-2.82-2.3-5.1-4.85-6.43h.17zm-.88 4.2c1.65 1.15 2.82 2.99 3.17 5.27.7 4.78-1.65 9.2-5.95 10.55l-.17.17c-1.33-.82-2.3-1.82-2.99-2.99a9.92 9.92 0 0 1-2.3-6.93c0-4.6 2.48-8.4 6.25-10.25l1.82 4.2zM21.3 5.43c-1.15-1.33-2.65-2.3-4.35-2.82a12.3 12.3 0 0 0-4.85-1.15H12c.35 0 .7.17 1.05.17 2.48.35 4.6 1.82 5.95 3.88 1.33 1.99 1.82 4.35 1.48 6.78-.17 1.5-.67 2.99-1.33 4.35l.17.17c2.3-2.12 3.7-5.1 3.7-8.55 0-1.82-.5-3.52-1.32-4.85l-.35-.52z"/></svg>
+                    <h3 class="text-xl font-bold">Java</h3>
+                </div>
+                <div class="flex flex-col items-center p-6 glass-effect rounded-xl reveal">
+                    <svg class="w-16 h-16 mb-4 text-orange-400" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Amazon AWS</title><path d="M16.334 21.334c-2.39 1.43-5.22 1.43-7.66 0l-.82-2.39c-1.6-1.06-2.85-2.56-3.58-4.35l-2.22-2.22c-.71-1.78-.89-3.91-.53-5.95l1.24-3.58c1.06-1.6 2.56-2.85 4.35-3.58l2.39-.82c2.39-.82 5.09-.82 7.49 0l2.39.82c1.78.71 3.28 1.96 4.35 3.58l1.24 3.58c.53 2.03.35 4.17-.53 5.95l-2.22 2.22c-.71 1.78-1.96 3.28-3.58 4.35l-2.39.82zM8.914 8.194c-.42 1.08-.03 2.2.8 2.93.38.33.8.58 1.26.73l.24.07c.8.23 1.63.1 2.3-.38.85-.6 1.3-1.58 1.2-2.6-.08-.8-.48-1.52-1.08-2.02-.57-.48-1.28-.75-2.02-.75-.85 0-1.65.33-2.25.92-.6.6-.92 1.4-.92 2.25zM19.854 18.1c-1.23 1.03-2.7 1.75-4.28 2.05l-1.14.21-2.18.4c-1.3.24-2.63.1-3.88-.38-1.3-.5-2.46-1.3-3.4-2.32-1.03-1.1-1.75-2.4-2.05-3.88l-.21-1.14-.4-2.18c-.24-1.3-.1-2.63.38-3.88.5-1.3 1.3-2.46 2.32-3.4 1.1-1.03 2.4-1.75 3.88-2.05l1.14-.21 2.18-.4c1.3-.24 2.63-.1 3.88.38 1.3.5 2.46 1.3 3.4 2.32 1.03 1.1 1.75 2.4 2.05 3.88l.21 1.14.4 2.18c.24 1.3.1 2.63-.38 3.88-.5 1.3-1.3 2.46-2.32 3.4z"/></svg>
+                    <h3 class="text-xl font-bold">AWS</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="achievements" class="section">
+        <div class="container mx-auto text-center max-w-5xl">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 reveal">Certifications & Achievements</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="glass-effect p-6 rounded-xl reveal text-left flex items-center space-x-4">
+                    <div class="flex-shrink-0"><svg class="w-12 h-12 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.135 3.135 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.135 3.135 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.135-3.135 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.135-3.135z"></path></svg></div>
+                    <div>
+                        <h3 class="text-xl font-bold">Complete Machine Learning & Data Science Program</h3>
+                        <p class="text-gray-400">GeeksForGeeks- 2024</p>
+                    </div>
+                </div>
+                <div class="glass-effect p-6 rounded-xl reveal text-left flex items-center space-x-4">
+                    <div class="flex-shrink-0"><svg class="w-12 h-12 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-12v4m-2-2h4m5 6v4m-2-2h4M12 3v18"></path></svg></div>
+                    <div>
+                        <h3 class="text-xl font-bold">GenAI Job Simulation</h3>
+                        <p class="text-gray-400">BCGX - 2024</p>
+                    </div>
+                </div>
+                <div class="glass-effect p-6 rounded-xl reveal text-left flex items-center space-x-4">
+                    <div class="flex-shrink-0"><svg class="w-12 h-12 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-12v4m-2-2h4m5 6v4m-2-2h4M12 3v18"></path></svg></div>
+                    <div>
+                        <h3 class="text-xl font-bold">GenAI Job Simulation</h3>
+                        <p class="text-gray-400">BCGX - 2024</p>
+                    </div>
+                </div>
+                <div class="glass-effect p-6 rounded-xl reveal text-left flex items-center space-x-4">
+                    <div class="flex-shrink-0"><svg class="w-12 h-12 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-12v4m-2-2h4m5 6v4m-2-2h4M12 3v18"></path></svg></div>
+                    <div>
+                        <h3 class="text-xl font-bold">Data anlytics Certificate</h3>
+                        <p class="text-gray-400">Deloitte - 2024</p>
+                    </div>
+                </div>
+                <div class="glass-effect p-6 rounded-xl reveal text-left flex items-center space-x-4">
+                    <div class="flex-shrink-0"><svg class="w-12 h-12 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-12v4m-2-2h4m5 6v4m-2-2h4M12 3v18"></path></svg></div>
+                    <div>
+                        <h3 class="text-xl font-bold">Myntra hacker Ramp certificate</h3>
+                        <p class="text-gray-400">Myntra - 2024</p>
+                    </div>
+                </div>
+                <div class="glass-effect p-6 rounded-xl reveal text-left flex items-center space-x-4">
+                    <div class="flex-shrink-0"><svg class="w-12 h-12 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.135 3.135 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.135 3.135 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.135-3.135 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.135-3.135z"></path></svg></div>
+                    <div>
+                        <h3 class="text-xl font-bold">IBM DevOps and Software Engineering Professional Certificate</h3>
+                        <p class="text-gray-400">IBM- 2024</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="section">
+        <div class="container mx-auto text-center max-w-5xl">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 reveal">What Others Say</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="glass-effect p-8 rounded-xl reveal text-left">
+                    <p class="text-gray-300 italic mb-4">"Vaishnavi stands out as a dynamic professional with expertise in data science, machine learning, and business intelligence. 
+She has the rare ability to turn complex data into clear business insights while demonstrating strong leadership, communication, and problem-solving skills. 
+Any team would benefit from her talent and dedication."</p>
+                    <p class="text-sky-300 font-bold">Hemanth Pandey</p>
+                    <p class="text-gray-400">Senior Software Engineer | Ex - Meta, Salesforce, Tesla | Helping Software Engineers 2X their compensation | Featured on Business Insider and Times Square
+</p>
+                </div>
+                <div class="glass-effect p-8 rounded-xl reveal text-left">
+                    <p class="text-gray-300 italic mb-4">Vaishnavi is an exceptionally talented professional with a rare blend of technical expertise and business acumen. She has proven strengths in Tech. Her ability to interpret complex datasets and transform them into strategic insights makes her stand out.
+
+What truly sets Vaishnavi apart is her leadership, communication, and collaborative approach. She not only solves problems with precision but also drives teamwork and knowledge sharing, ensuring successful project outcomes. With her adaptability, continuous learning mindset, and passion for innovation, Vaishnavi is a valuable asset to any organization looking to combine technical excellence with impactful results.</p>
+                    <p class="text-sky-300 font-bold">Hina Arora</p>
+                    <p class="text-gray-400">Personal Brand Strategist, EM @ Jio</p>
+                </div>
+                <div class="glass-effect p-8 rounded-xl reveal text-left">
+                    <p class="text-gray-300 italic mb-4">Vaishnavi is a highly skilled professional with strong expertise in data science, machine learning, business analysis, and business intelligence. 
+She combines technical proficiency in Python, SQL, and analytics with excellent communication, leadership, and problem-solving abilities, making her a valuable asset to any organization.</p>
+                    <p class="text-sky-300 font-bold">Prasanth Varshney</p>
+                    <p class="text-gray-400">Engineering @ Intuit </p>
+                </div>
+                <div class="glass-effect p-8 rounded-xl reveal text-left">
+                    <p class="text-gray-300 italic mb-4">"Vaishnavi is a brilliant data scientist who can effortlessly translate complex data into clear, actionable insights. Her work on our performance dashboards was a game-changer."</p>
+                    <p class="text-sky-300 font-bold">Souhardya Bose</p>
+                    <p class="text-gray-400">Head Of Department,Lovely Professional University.</p>
+                </div>
+                <div class="glass-effect p-8 rounded-xl reveal text-left">
+                    <p class="text-gray-300 italic mb-4">"Working with Vaishnavi on our freelance project was a fantastic experience. She is professional, timely, and her analytical skills are top-notch. Highly recommended!"</p>
+                    <p class="text-sky-300 font-bold">Vijitha</p>
+                    <p class="text-gray-400">Client, Airtasker-Australia</p>
+                </div>
+                <div class="glass-effect p-8 rounded-xl reveal text-left">
+                    <p class="text-gray-300 italic mb-4">I had the pleasure of working with Vaishnavi on a data science project at SCC. She consistently demonstrated exceptional analytical skills and attention to detail. Her ability to translate complex datasets into actionable insights helped the team make key business decisions faster. Vaishnavi is also a great team player, always ready to support others. I highly recommend her for any data analytics or business intelligence role.
+</p>
+                    <p class="text-sky-300 font-bold">Siddharth chandel</p>
+                    <p class="text-gray-400">Secretary & Head of AI/ML @SCC, LPU </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="container mx-auto text-center max-w-2xl glass-effect rounded-2xl p-8 md:p-12">
+            <h2 class="text-3xl md:text-4xl font-bold mb-8 reveal">Get In Touch</h2>
+            <p class="text-lg text-gray-300 mb-8 reveal">
+                I'm currently open to new opportunities and collaborations. Feel free to send me a message!
+            </p>
+            <form id="contact-form" class="space-y-6 reveal">
+                <input type="text" placeholder="Your Name" class="w-full p-3 rounded-lg bg-slate-800 border border-slate-700 focus:outline-none focus:ring-2 focus:ring-sky-500" required>
+                <input type="email" placeholder="Your Email" class="w-full p-3 rounded-lg bg-slate-800 border border-slate-700 focus:outline-none focus:ring-2 focus:ring-sky-500" required>
+                <textarea placeholder="Your Message" rows="5" class="w-full p-3 rounded-lg bg-slate-800 border border-slate-700 focus:outline-none focus:ring-2 focus:ring-sky-500" required></textarea>
+                <button type="submit" class="w-full animated-button text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105">
+                    Send Message
+                </button>
+            </form>
+            <div id="form-message" class="mt-4 text-green-400"></div>
+        </div>
+    </section>
+
+    <footer class="bg-transparent py-8 relative z-10">
+        <div class="container mx-auto text-center text-gray-400">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="https://github.com/VaishnaviBasukar20" target="_blank" rel="noopener noreferrer" class="hover:text-white transition duration-300">GitHub</a>
+                <a href="https://www.linkedin.com/in/vaishnavi-basutkar-24699a2a7/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition duration-300">LinkedIn</a>
+               
+            </div>
+            <p>&copy; 2025 Vaishnavi Basutkar. All Rights Reserved.</p>
+        </div>
+    </footer>
+    
+    <button id="to-top-button" class="hidden fixed bottom-5 right-5 z-50 p-3 bg-sky-500 text-white rounded-full shadow-lg hover:bg-sky-600 transition duration-300">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+        </svg>
+    </button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.waves.min.js"></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- Vanta.js Waves Animation for full background ---
+            VANTA.WAVES({
+              el: "#vanta-bg",
+              mouseControls: true,
+              touchControls: true,
+              gyroControls: false,
+              minHeight: 200.00,
+              minWidth: 200.00,
+              scale: 1.00,
+              scaleMobile: 1.00,
+              color: 0x0f172a, // Match the body background color
+              shininess: 30.00,
+              waveHeight: 15.00,
+              waveSpeed: 0.75,
+              zoom: 0.75
+            });
+
+            // --- ScrollReveal ---
+            const sr = ScrollReveal({
+                distance: '50px',
+                duration: 1500,
+                easing: 'cubic-bezier(0.5, 0, 0, 1)',
+                reset: false
+            });
+            sr.reveal('.reveal');
+            
+            // --- Typed.js-like effect ---
+            const typedTextSpan = document.getElementById('typed-text');
+            const words = ["Data Scientist", "Data Analyst", "Business Analyst", "Problem Solver", "Tech Innovator"];
+            let wordIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+
+            function type() {
+                const currentWord = words[wordIndex];
+                if (isDeleting) {
+                    typedTextSpan.textContent = currentWord.substring(0, charIndex - 1);
+                    charIndex--;
+                } else {
+                    typedTextSpan.textContent = currentWord.substring(0, charIndex + 1);
+                    charIndex++;
+                }
+
+                if (!isDeleting && charIndex === currentWord.length) {
+                    setTimeout(() => isDeleting = true, 2000);
+                } else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    wordIndex = (wordIndex + 1) % words.length;
+                }
+                
+                const typingSpeed = isDeleting ? 100 : 200;
+                setTimeout(type, typingSpeed);
+            }
+            type();
+
+            // --- Header background on scroll ---
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('bg-slate-800/90', 'backdrop-blur-sm', 'shadow-lg');
+                } else {
+                    header.classList.remove('bg-slate-800/90', 'backdrop-blur-sm', 'shadow-lg');
+                }
+            });
+            
+            // --- Mobile Menu Toggle ---
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // --- Smooth scrolling for nav links ---
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetElement = document.querySelector(this.getAttribute('href'));
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                });
+            });
+
+            // --- Active Nav Link Highlighting ---
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (pageYOffset >= sectionTop - 70) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active-link');
+                    if (link.getAttribute('href').includes(current)) {
+                        link.classList.add('active-link');
+                    }
+                });
+            });
+
+            // --- Contact Form Submission ---
+            const contactForm = document.getElementById('contact-form');
+            const formMessage = document.getElementById('form-message');
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                formMessage.textContent = 'Thank you! Your message has been sent.';
+                contactForm.reset();
+                setTimeout(() => {
+                    formMessage.textContent = '';
+                }, 5000);
+            });
+            
+            // --- Scroll to Top Button ---
+            const toTopButton = document.getElementById('to-top-button');
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    toTopButton.classList.remove('hidden');
+                } else {
+                    toTopButton.classList.add('hidden');
+                }
+            });
+            toTopButton.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+        });
+    </script>
+</body>
+</html>
